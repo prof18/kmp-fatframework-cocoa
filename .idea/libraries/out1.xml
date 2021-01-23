@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="out1">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../hn-foundation/build/intermediates/merged_java_res/release/out.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
