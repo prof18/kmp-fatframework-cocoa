@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="classes1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../hn-foundation/build/intermediates/packaged-classes/release/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

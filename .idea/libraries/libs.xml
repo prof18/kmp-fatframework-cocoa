@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="libs">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../hn-foundation/build/libs/hn-foundation-iosx64-1.0.1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../hn-foundation/build/libs/hn-foundation-iosarm64-1.0.1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../hn-foundation/build/libs/hn-foundation-android-debug-1.0.1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../hn-foundation/build/libs/hn-foundation-1.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../hn-foundation/build/libs/hn-foundation-iosx64-1.0.1-metadata.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../hn-foundation/build/libs/hn-foundation-android-1.0.1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../hn-foundation/build/libs/hn-foundation-iosarm64-1.0.1-metadata.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../hn-foundation/build/libs/hn-foundation-jvm-1.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../hn-foundation/build/libs/hn-foundation-metadata-1.0.1-all.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../hn-foundation/build/libs/hn-foundation-jvm-1.0.1-sources.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
