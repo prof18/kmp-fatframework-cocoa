@@ -2,26 +2,6 @@ package com.prof18.kmp.fatframework.cocoa.task
 
 /*
 
-
-        register("universalFrameworkRelease", org.jetbrains.kotlin.gradle.tasks.FatFrameworkTask::class) {
-            baseName = libName
-            from(
-                iosArm64().binaries.getFramework(libName, "Release"),
-                iosX64().binaries.getFramework(libName, "Release")
-            )
-            destinationDir = buildDir.resolve("$rootDir/../../hn-foundation-cocoa")
-            group = libName
-            description = "Create the release framework for iOs"
-            dependsOn("linkHNFoundationReleaseFrameworkIosArm64")
-            dependsOn("linkHNFoundationReleaseFrameworkIosX64")
-        }
-
-        register("universalFramework") {
-            description = "Create the debug and release framework for iOs"
-            dependsOn("universalFrameworkDebug")
-            dependsOn("universalFrameworkRelease")
-        }
-
         register("publishDevFramework") {
             description = "Publish iOs framweork to the Cocoa Repo"
 

@@ -75,7 +75,7 @@ gradlePlugin {
     plugins {
         create("com.prof18.kmp.fatframework.cocoa") {
             id = "com.prof18.kmp.fatframework.cocoa"
-            implementationClass = "com.prof18.kmp.fatframework.cocoa.TemplatePlugin"
+            implementationClass = "com.prof18.kmp.fatframework.cocoa.KMPFatFrameworkCocoaPlugin"
         }
     }
 }
