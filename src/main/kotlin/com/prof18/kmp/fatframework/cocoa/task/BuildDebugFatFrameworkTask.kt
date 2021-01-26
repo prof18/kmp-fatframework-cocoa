@@ -5,16 +5,17 @@ import org.gradle.api.Project
 import org.jetbrains.kotlin.gradle.tasks.FatFrameworkTask
 import java.io.File
 
-const val BUILD_DEBUG_FAT_FRAMEWORK_NAME = "buildDebugFatFramework"
+const val BUILD_DEBUG_FAT_FRAMEWORK_TASK_NAME = "buildDebugFatFramework"
 
-fun Project.registerBuildDebugFatFramework() = tasks.register(BUILD_DEBUG_FAT_FRAMEWORK_NAME, FatFrameworkTask::class.java) {
-    description = "Create a Debug Fat Framework"
+fun Project.registerBuildDebugFatFramework() =
+    tasks.register(BUILD_DEBUG_FAT_FRAMEWORK_TASK_NAME, FatFrameworkTask::class.java) {
+        description = "Create a Debug Fat Framework"
 
-    val config = getConfigurationOrThrow()
-    for (framework in config.debugFatFrameworkList) {
-        dependsOn(framework.linkTaskName)
+        val config = getConfigurationOrThrow()
+        for (framework in config.debugFatFrameworkList) {
+            dependsOn(framework.linkTaskName)
+        }
+        baseName = config.fatFrameworkName
+        from(config.debugFatFrameworkList)
+        destinationDir = File(config.outputPath)
     }
-    baseName = config.fatFrameworkName
-    from(config.debugFatFrameworkList)
-    destinationDir = File(config.outputPath)
-}

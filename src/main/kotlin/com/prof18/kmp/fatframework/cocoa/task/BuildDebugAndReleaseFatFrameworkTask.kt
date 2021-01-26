@@ -5,10 +5,10 @@ import org.gradle.api.Project
 import org.jetbrains.kotlin.gradle.tasks.FatFrameworkTask
 import java.io.File
 
-const val BUILD_DEBUG_AND_RELEASE_FAT_FRAMEWORK_NAME = "buildDebugAndReleaseFatFramework"
+const val BUILD_DEBUG_AND_RELEASE_FAT_FRAMEWORK_TASK_NAME = "buildDebugAndReleaseFatFramework"
 
 fun Project.registerBuildFatFramework() =
-    tasks.register(BUILD_DEBUG_AND_RELEASE_FAT_FRAMEWORK_NAME, FatFrameworkTask::class.java) {
+    tasks.register(BUILD_DEBUG_AND_RELEASE_FAT_FRAMEWORK_TASK_NAME, FatFrameworkTask::class.java) {
         description = "Create a Fat Framework with both the debug and release targets"
 
         val config = getConfigurationOrThrow()

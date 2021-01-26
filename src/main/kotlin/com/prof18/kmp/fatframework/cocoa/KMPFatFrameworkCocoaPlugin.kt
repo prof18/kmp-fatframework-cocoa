@@ -1,7 +1,6 @@
 package com.prof18.kmp.fatframework.cocoa
 
-import com.prof18.kmp.fatframework.cocoa.task.registerBuildDebugFatFramework
-import com.prof18.kmp.fatframework.cocoa.task.registerBuildReleaseFatFramework
+import com.prof18.kmp.fatframework.cocoa.task.*
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.findByType
@@ -44,15 +43,15 @@ abstract class KMPFatFrameworkCocoaPlugin : Plugin<Project> {
                     project.registerBuildDebugFatFramework()
                     project.registerBuildReleaseFatFramework()
                     project.registerBuildReleaseFatFramework()
+                    project.registerBuildFatFramework()
+                    project.registerPublishDebugFramework()
+                    project.registerPublishReleaseFramework()
+
+                    // TODO: maybe create a task for creating a cocoa pod repository?
                 }
         }
-
-
     }
-
-
 }
 
-// TODO: improve all of this with messages and stuff
 
 
