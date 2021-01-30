@@ -42,7 +42,6 @@ abstract class KMPFatFrameworkCocoaPlugin : Plugin<Project> {
                     // Register Tasks
                     project.registerBuildDebugFatFramework()
                     project.registerBuildReleaseFatFramework()
-                    project.registerBuildReleaseFatFramework()
                     project.registerBuildFatFramework()
                     project.registerPublishDebugFramework()
                     project.registerPublishReleaseFramework()

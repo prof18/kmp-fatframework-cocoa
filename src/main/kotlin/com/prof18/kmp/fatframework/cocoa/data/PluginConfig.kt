@@ -16,7 +16,8 @@ class PluginConfig private constructor(
     val releaseFatFrameworkList: List<Framework>,
     val fatFrameworkName: String,
     val outputPath: String,
-    val namePrefix: String?
+    val namePrefix: String?,
+    val versionName: String
 ) {
     internal companion object {
         fun of(extension: KMPFatFrameworkCocoaExtension): PluginConfig {
@@ -27,7 +28,8 @@ class PluginConfig private constructor(
                 releaseFatFrameworkList = extension.releaseFrameworkList,
                 fatFrameworkName = extension.fatFrameworkName.get(),
                 outputPath = extension.outputPath.get(),
-                namePrefix = extension.namePrefix.orNull
+                namePrefix = extension.namePrefix.orNull,
+                versionName = extension.versionName.get()
             )
         }
     }

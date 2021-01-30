@@ -21,6 +21,7 @@ abstract class KMPFatFrameworkCocoaExtension @Inject constructor(project: Projec
     val fatFrameworkName: Property<String> = objects.property(String::class.java)
     val outputPath: Property<String> = objects.property(String::class.java)
     val namePrefix: Property<String> = objects.property(String::class.java)
+    val versionName: Property<String> = objects.property(String::class.java)
 
 
     // Internal variables
