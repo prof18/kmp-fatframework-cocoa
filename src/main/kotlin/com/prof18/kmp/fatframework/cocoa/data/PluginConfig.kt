@@ -21,15 +21,33 @@ class PluginConfig private constructor(
 ) {
     internal companion object {
         fun of(extension: KMPFatFrameworkCocoaExtension): PluginConfig {
+
+            val fatFrameworkName: String = if (extension.fatFrameworkName == null) {
+                throw InvalidUserDataException("You must provide the property `fatFrameworkName`")
+            } else {
+                extension.fatFrameworkName!!
+            }
+            val outputPath = if (extension.outputPath == null) {
+                throw InvalidUserDataException("You must provide the property `outputPath`")
+            } else {
+                extension.outputPath!!
+            }
+
+            val versionName = if (extension.versionName == null) {
+                throw InvalidUserDataException("You must provide the property `versionName`")
+            } else {
+                extension.versionName!!
+            }
+
             return PluginConfig(
                 // TODO: user get or null and throw error,
                 //  and improve with error messages.
                 debugFatFrameworkList = extension.debugFrameworkList,
                 releaseFatFrameworkList = extension.releaseFrameworkList,
-                fatFrameworkName = extension.fatFrameworkName.get(),
-                outputPath = extension.outputPath.get(),
-                namePrefix = extension.namePrefix.orNull,
-                versionName = extension.versionName.get()
+                fatFrameworkName = fatFrameworkName,
+                outputPath = outputPath,
+                namePrefix = extension.namePrefix,
+                versionName = versionName
             )
         }
     }

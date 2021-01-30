@@ -15,14 +15,10 @@ const val FAT_FRAMEWORK_COCOA_EXTENSION = "fatFrameworkCocoaConfig"
 @Suppress("UnnecessaryAbstractClass")
 abstract class KMPFatFrameworkCocoaExtension @Inject constructor(project: Project) {
 
-    private val objects = project.objects
-
-    // Published variables set by the user
-    val fatFrameworkName: Property<String> = objects.property(String::class.java)
-    val outputPath: Property<String> = objects.property(String::class.java)
-    val namePrefix: Property<String> = objects.property(String::class.java)
-    val versionName: Property<String> = objects.property(String::class.java)
-
+    var fatFrameworkName: String? = null
+    var outputPath: String? = null
+    var namePrefix: String? = null
+    var versionName: String? = null
 
     // Internal variables
     internal val debugFrameworkList: MutableList<Framework> = mutableListOf()

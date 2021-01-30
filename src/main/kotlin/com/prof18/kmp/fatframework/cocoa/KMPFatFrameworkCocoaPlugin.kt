@@ -22,7 +22,7 @@ abstract class KMPFatFrameworkCocoaPlugin : Plugin<Project> {
                         .filterIsInstance<KotlinNativeTarget>()
                         .filter { it.konanTarget.family.isAppleFamily }
 
-                    val namePrefix = extension.namePrefix.orNull
+                    val namePrefix = extension.namePrefix
 
                     for (nativeTarget in nativeTargetList) {
                         val debugFramework: Framework = if (namePrefix == null) {
@@ -42,7 +42,6 @@ abstract class KMPFatFrameworkCocoaPlugin : Plugin<Project> {
                     // Register Tasks
                     project.registerBuildDebugFatFramework()
                     project.registerBuildReleaseFatFramework()
-                    project.registerBuildFatFramework()
                     project.registerPublishDebugFramework()
                     project.registerPublishReleaseFramework()
 
