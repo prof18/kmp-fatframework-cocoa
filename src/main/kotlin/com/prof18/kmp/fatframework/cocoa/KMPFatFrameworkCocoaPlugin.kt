@@ -40,10 +40,11 @@ abstract class KMPFatFrameworkCocoaPlugin : Plugin<Project> {
                     }
 
                     // Register Tasks
-                    project.registerBuildDebugFatFramework()
-                    project.registerBuildReleaseFatFramework()
-                    project.registerPublishDebugFramework()
-                    project.registerPublishReleaseFramework()
+                    project.registerBuildDebugFatFrameworkTask()
+                    project.registerBuildReleaseFatFrameworkTask()
+                    project.registerPublishDebugFrameworkTask()
+                    project.registerPublishReleaseFrameworkTask()
+                    project.registerGenerateCocoaPodRepositoryTask()
 
                     // TODO: maybe create a task for creating a cocoa pod repository?
                 }

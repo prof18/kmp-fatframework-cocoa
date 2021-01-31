@@ -7,7 +7,7 @@ import java.io.File
 
 const val BUILD_DEBUG_FAT_FRAMEWORK_TASK_NAME = "buildDebugFatFramework"
 
-fun Project.registerBuildDebugFatFramework() =
+fun Project.registerBuildDebugFatFrameworkTask() {
     tasks.register(BUILD_DEBUG_FAT_FRAMEWORK_TASK_NAME, FatFrameworkTask::class.java) {
         description = "Create a Debug Fat Framework"
 
@@ -19,3 +19,4 @@ fun Project.registerBuildDebugFatFramework() =
         from(config.debugFatFrameworkList)
         destinationDir = File(config.outputPath)
     }
+}

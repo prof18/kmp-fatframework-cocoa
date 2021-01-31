@@ -17,7 +17,8 @@ class PluginConfig private constructor(
     val fatFrameworkName: String,
     val outputPath: String,
     val namePrefix: String?,
-    val versionName: String
+    val versionName: String,
+    val cocoaPodRepoInfo: CocoaPodRepoInfo
 ) {
     internal companion object {
         fun of(extension: KMPFatFrameworkCocoaExtension): PluginConfig {
@@ -47,7 +48,8 @@ class PluginConfig private constructor(
                 fatFrameworkName = fatFrameworkName,
                 outputPath = outputPath,
                 namePrefix = extension.namePrefix,
-                versionName = versionName
+                versionName = versionName,
+                cocoaPodRepoInfo = extension.cocoaPodRepoInfo
             )
         }
     }

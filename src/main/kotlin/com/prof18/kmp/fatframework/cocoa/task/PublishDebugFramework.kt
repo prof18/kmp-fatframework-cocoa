@@ -12,14 +12,14 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 const val PUBLISH_DEBUG_FRAMEWORK_TASK_NAME = "publishDebugFramework"
+const val PREPARE_COCOA_REPO_FOR_DEBUG_TASK_NAME = "prepareCocoaRepoForDebug"
 
-fun Project.registerPublishDebugFramework() =
-    tasks.register(PUBLISH_DEBUG_FRAMEWORK_TASK_NAME) {
-        description = "Publish the debug framework to a CocoaPod repository"
+fun Project.registerPublishDebugFrameworkTask() {
+
+    tasks.register(PREPARE_COCOA_REPO_FOR_DEBUG_TASK_NAME) {
+        description = "Prepare the CocoaPod repository for debug."
 
         val config = getConfigurationOrThrow()
-        val libVersionName = config.versionName
-
         // Check if is a git repository
         try {
             executeBashCommand(
@@ -36,7 +36,16 @@ fun Project.registerPublishDebugFramework() =
             commandList = listOf("git", "checkout", "develop"),
             exceptionMessage = "Error while checking out to the develop branch. Are you sure it does exists?"
         )
+    }
 
+    tasks.register(PUBLISH_DEBUG_FRAMEWORK_TASK_NAME) {
+        description = "Publish the debug framework to a CocoaPod repository"
+
+        val config = getConfigurationOrThrow()
+        val libVersionName = config.versionName
+
+        mustRunAfter(PREPARE_COCOA_REPO_FOR_DEBUG_TASK_NAME)
+        dependsOn(PREPARE_COCOA_REPO_FOR_DEBUG_TASK_NAME)
         dependsOn(BUILD_DEBUG_FAT_FRAMEWORK_TASK_NAME)
 
         doLast {
@@ -92,3 +101,4 @@ fun Project.registerPublishDebugFramework() =
             }
         }
     }
+}

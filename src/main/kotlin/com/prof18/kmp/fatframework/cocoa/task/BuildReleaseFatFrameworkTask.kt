@@ -7,7 +7,7 @@ import java.io.File
 
 const val BUILD_RELEASE_FAT_FRAMEWORK_TASK_NAME = "buildReleaseFatFramework"
 
-fun Project.registerBuildReleaseFatFramework() =
+fun Project.registerBuildReleaseFatFrameworkTask() {
     tasks.register(BUILD_RELEASE_FAT_FRAMEWORK_TASK_NAME, FatFrameworkTask::class.java) {
         description = "Create a Release Fat Framework"
 
@@ -19,3 +19,4 @@ fun Project.registerBuildReleaseFatFramework() =
         from(config.releaseFatFrameworkList)
         destinationDir = File(config.outputPath)
     }
+}
