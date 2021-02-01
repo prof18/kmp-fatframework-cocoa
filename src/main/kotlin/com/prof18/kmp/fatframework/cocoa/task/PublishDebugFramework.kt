@@ -21,21 +21,23 @@ fun Project.registerPublishDebugFrameworkTask() {
 
         val config = getConfigurationOrThrow()
         // Check if is a git repository
-        try {
-            executeBashCommand(
-                showOutput = false,
-                workingDirPath = config.outputPath,
-                commandList = listOf("git", "rev-parse", "--is-inside-work-tree")
-            )
-        } catch (e: ExecException) {
-            throw InvalidUserDataException("The provided output folder is not a git repository!")
-        }
+        doLast {
+            try {
+                executeBashCommand(
+                    showOutput = false,
+                    workingDirPath = config.outputPath,
+                    commandList = listOf("git", "rev-parse", "--is-inside-work-tree")
+                )
+            } catch (e: ExecException) {
+                throw InvalidUserDataException("The provided output folder is not a git repository!")
+            }
 
-        // Checkout on develop
-        execBashCommandInRepoAndThrowExecException(
-            commandList = listOf("git", "checkout", "develop"),
-            exceptionMessage = "Error while checking out to the develop branch. Are you sure it does exists?"
-        )
+            // Checkout on develop
+            execBashCommandInRepoAndThrowExecException(
+                commandList = listOf("git", "checkout", "develop"),
+                exceptionMessage = "Error while checking out to the develop branch. Are you sure it does exists?"
+            )
+        }
     }
 
     tasks.register(PUBLISH_DEBUG_FRAMEWORK_TASK_NAME) {

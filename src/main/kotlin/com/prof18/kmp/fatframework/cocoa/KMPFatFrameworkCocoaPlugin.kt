@@ -7,6 +7,7 @@ import org.gradle.kotlin.dsl.findByType
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 import org.jetbrains.kotlin.gradle.plugin.mpp.Framework
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
+import org.jetbrains.kotlin.konan.target.Family
 
 abstract class KMPFatFrameworkCocoaPlugin : Plugin<Project> {
     override fun apply(project: Project) {
@@ -20,7 +21,7 @@ abstract class KMPFatFrameworkCocoaPlugin : Plugin<Project> {
 
                     val nativeTargetList: List<KotlinNativeTarget> = kmpExtension.targets.toList()
                         .filterIsInstance<KotlinNativeTarget>()
-                        .filter { it.konanTarget.family.isAppleFamily }
+                        .filter { it.konanTarget.family == Family.IOS  }
 
                     val namePrefix = extension.namePrefix
 
@@ -46,7 +47,6 @@ abstract class KMPFatFrameworkCocoaPlugin : Plugin<Project> {
                     project.registerPublishReleaseFrameworkTask()
                     project.registerGenerateCocoaPodRepositoryTask()
 
-                    // TODO: maybe create a task for creating a cocoa pod repository?
                 }
         }
     }
