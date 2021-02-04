@@ -1,6 +1,3 @@
-//plugins {
-//    kotlin("jvm") version "1.4.21"
-//}
 
 version = "0.0.1-SNAPSHOT"
 
@@ -35,8 +32,8 @@ repositories {
 dependencies {
     compileOnly(gradleApi())
 
-    compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.21")
-    compileOnly("org.jetbrains.kotlin:kotlin-compiler-embeddable:1.4.21")
+    compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.30")
+    compileOnly("org.jetbrains.kotlin:kotlin-compiler-embeddable:1.4.30")
 
 //    testImplementation("io.kotest:kotest-runner-junit5:4.3.0")
 //    testImplementation("io.kotest:kotest-assertions-core:4.3.0")
