@@ -11,8 +11,8 @@ import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
-const val PUBLISH_DEBUG_FRAMEWORK_TASK_NAME = "publishDebugFramework"
-const val PREPARE_COCOA_REPO_FOR_DEBUG_TASK_NAME = "prepareCocoaRepoForDebug"
+const val PUBLISH_DEBUG_FRAMEWORK_TASK_NAME = "publishIosDebugFatFramework"
+const val PREPARE_COCOA_REPO_FOR_DEBUG_TASK_NAME = "prepareIosCocoaRepoForDebug"
 
 fun Project.registerPublishDebugFrameworkTask() {
 

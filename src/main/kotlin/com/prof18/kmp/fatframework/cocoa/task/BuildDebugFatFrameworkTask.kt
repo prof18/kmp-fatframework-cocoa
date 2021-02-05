@@ -5,7 +5,7 @@ import org.gradle.api.Project
 import org.jetbrains.kotlin.gradle.tasks.FatFrameworkTask
 import java.io.File
 
-const val BUILD_DEBUG_FAT_FRAMEWORK_TASK_NAME = "buildDebugFatFramework"
+const val BUILD_DEBUG_FAT_FRAMEWORK_TASK_NAME = "buildIosDebugFatFramework"
 
 fun Project.registerBuildDebugFatFrameworkTask() {
     tasks.register(BUILD_DEBUG_FAT_FRAMEWORK_TASK_NAME, FatFrameworkTask::class.java) {

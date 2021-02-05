@@ -2,15 +2,15 @@
 
 ```bash
 
-./gradlew buildDebugFatFramework
+./gradlew buildIosDebugFatFramework
 
-./gradlew buildReleaseFatFramework
+./gradlew buildIosReleaseFatFramework
 
-./gradlew generateCocoaPodRepo
+./gradlew generateCocoaPodRepoForIosFatFramework
 
-./gradlew publishDebugFramework
+./gradlew publishIosDebugFatFramework
 
-./gradlew publishReleaseFramework
+./gradlew publishIosReleaseFatFramework
 
 ```
 
