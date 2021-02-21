@@ -12,8 +12,8 @@ import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
-const val PUBLISH_RELEASE_FRAMEWORK_TASK_NAME = "publishIosReleaseFatFramework"
-const val PREPARE_COCOA_REPO_FOR_RELEASE_TASK_NAME = "prepareIosCocoaRepoForRelease"
+internal const val PUBLISH_RELEASE_FRAMEWORK_TASK_NAME = "publishIosReleaseFatFramework"
+internal const val PREPARE_COCOA_REPO_FOR_RELEASE_TASK_NAME = "prepareIosCocoaRepoForRelease"
 
 internal fun Project.registerPublishReleaseFrameworkTask() {
 

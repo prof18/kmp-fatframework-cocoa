@@ -8,9 +8,9 @@ import groovy.text.SimpleTemplateEngine
 import org.gradle.api.Project
 import java.io.File
 
-const val GENERATE_COCOA_POD_TASK_NAME = "generateCocoaPodRepoForIosFatFramework"
+internal const val GENERATE_COCOA_POD_TASK_NAME = "generateCocoaPodRepoForIosFatFramework"
 
-fun Project.registerGenerateCocoaPodRepositoryTask() {
+internal fun Project.registerGenerateCocoaPodRepositoryTask() {
     tasks.register(GENERATE_COCOA_POD_TASK_NAME) {
 
         description = "Create a CocoaPod repository to distribute the FatFramework"

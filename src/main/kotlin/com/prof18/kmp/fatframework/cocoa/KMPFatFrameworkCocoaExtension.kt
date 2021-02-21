@@ -7,7 +7,7 @@ import org.gradle.util.ConfigureUtil
 import org.jetbrains.kotlin.gradle.plugin.mpp.Framework
 import javax.inject.Inject
 
-const val FAT_FRAMEWORK_COCOA_EXTENSION = "fatFrameworkCocoaConfig"
+internal const val FAT_FRAMEWORK_COCOA_EXTENSION = "fatFrameworkCocoaConfig"
 
 @Suppress("UnnecessaryAbstractClass")
 abstract class KMPFatFrameworkCocoaExtension @Inject constructor(project: Project) {
@@ -16,11 +16,11 @@ abstract class KMPFatFrameworkCocoaExtension @Inject constructor(project: Projec
     var outputPath: String? = null
     var namePrefix: String? = null
     var versionName: String? = null
-    var cocoaPodRepoInfo: CocoaPodRepoInfo = CocoaPodRepoInfo()
 
     // Internal variables
     internal val debugFrameworkList: MutableList<Framework> = mutableListOf()
     internal val releaseFrameworkList: MutableList<Framework> = mutableListOf()
+    internal var cocoaPodRepoInfo: CocoaPodRepoInfo = CocoaPodRepoInfo()
 
     fun cocoaPodRepoInfo(configure: CocoaPodRepoDSL.() -> Unit) {
         CocoaPodRepoDSL().also { dsl ->

@@ -7,11 +7,11 @@ import org.gradle.api.Project
 import org.jetbrains.kotlin.gradle.plugin.mpp.Framework
 
 @Throws(InvalidUserDataException::class)
-fun Project.getConfigurationOrThrow() = PluginConfig.of(
+internal fun Project.getConfigurationOrThrow() = PluginConfig.of(
     extensions.findByName(FAT_FRAMEWORK_COCOA_EXTENSION) as KMPFatFrameworkCocoaExtension
 )
 
-class PluginConfig private constructor(
+internal  class PluginConfig private constructor(
     val debugFatFrameworkList: List<Framework>,
     val releaseFatFrameworkList: List<Framework>,
     val fatFrameworkName: String,

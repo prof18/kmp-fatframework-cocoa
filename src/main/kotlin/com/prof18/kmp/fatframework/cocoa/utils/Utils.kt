@@ -6,7 +6,7 @@ import org.gradle.process.internal.ExecException
 import java.io.ByteArrayOutputStream
 import java.io.File
 
-fun Project.executeBashCommand(showOutput: Boolean = true, workingDirPath: String, commandList: List<String>): String {
+internal fun Project.executeBashCommand(showOutput: Boolean = true, workingDirPath: String, commandList: List<String>): String {
     return ByteArrayOutputStream().use { outputStream ->
         project.exec {
             workingDir = File(workingDirPath)
@@ -21,7 +21,7 @@ fun Project.executeBashCommand(showOutput: Boolean = true, workingDirPath: Strin
     }
 }
 
-fun Project.executeBashCommand(showOutput: Boolean = true, workingDirFile: File, commandList: List<String>): String {
+internal fun Project.executeBashCommand(showOutput: Boolean = true, workingDirFile: File, commandList: List<String>): String {
     return ByteArrayOutputStream().use { outputStream ->
         project.exec {
             workingDir = workingDirFile
@@ -36,7 +36,7 @@ fun Project.executeBashCommand(showOutput: Boolean = true, workingDirFile: File,
     }
 }
 
-fun Project.execBashCommandInRepoAndThrowExecException(commandList: List<String>, exceptionMessage: String) {
+internal fun Project.execBashCommandInRepoAndThrowExecException(commandList: List<String>, exceptionMessage: String) {
     val config = getConfigurationOrThrow()
     try {
         executeBashCommand(
@@ -48,7 +48,7 @@ fun Project.execBashCommandInRepoAndThrowExecException(commandList: List<String>
     }
 }
 
-fun Project.execBashCommandThrowExecException(output: File, commandList: List<String>, exceptionMessage: String) {
+internal fun Project.execBashCommandThrowExecException(output: File, commandList: List<String>, exceptionMessage: String) {
     try {
         executeBashCommand(
             workingDirFile = output,
@@ -59,7 +59,7 @@ fun Project.execBashCommandThrowExecException(output: File, commandList: List<St
     }
 }
 
-fun Project.retrieveMainBranchName(): String {
+internal fun Project.retrieveMainBranchName(): String {
     val config = getConfigurationOrThrow()
     var branchName = ""
     try {

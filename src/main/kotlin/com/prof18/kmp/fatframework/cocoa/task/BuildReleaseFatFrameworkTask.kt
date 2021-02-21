@@ -5,9 +5,9 @@ import org.gradle.api.Project
 import org.jetbrains.kotlin.gradle.tasks.FatFrameworkTask
 import java.io.File
 
-const val BUILD_RELEASE_FAT_FRAMEWORK_TASK_NAME = "buildIosReleaseFatFramework"
+internal const val BUILD_RELEASE_FAT_FRAMEWORK_TASK_NAME = "buildIosReleaseFatFramework"
 
-fun Project.registerBuildReleaseFatFrameworkTask() {
+internal fun Project.registerBuildReleaseFatFrameworkTask() {
     tasks.register(BUILD_RELEASE_FAT_FRAMEWORK_TASK_NAME, FatFrameworkTask::class.java) {
         description = "Create a Release Fat Framework"
 

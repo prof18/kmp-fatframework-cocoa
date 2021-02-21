@@ -1,0 +1,34 @@
+public final class com/prof18/kmp/fatframework/cocoa/CocoaPodRepoDSL {
+	public fun <init> ()V
+	public final fun getAuthors ()Ljava/lang/String;
+	public final fun getGitUrl ()Ljava/lang/String;
+	public final fun getHomepage ()Ljava/lang/String;
+	public final fun getLicense ()Ljava/lang/String;
+	public final fun getSummary ()Ljava/lang/String;
+	public final fun setAuthors (Ljava/lang/String;)V
+	public final fun setGitUrl (Ljava/lang/String;)V
+	public final fun setHomepage (Ljava/lang/String;)V
+	public final fun setLicense (Ljava/lang/String;)V
+	public final fun setSummary (Ljava/lang/String;)V
+}
+
+public abstract class com/prof18/kmp/fatframework/cocoa/KMPFatFrameworkCocoaExtension {
+	public fun <init> (Lorg/gradle/api/Project;)V
+	public final fun cocoaPodRepoInfo (Lgroovy/lang/Closure;)V
+	public final fun cocoaPodRepoInfo (Lkotlin/jvm/functions/Function1;)V
+	public final fun getFatFrameworkName ()Ljava/lang/String;
+	public final fun getNamePrefix ()Ljava/lang/String;
+	public final fun getOutputPath ()Ljava/lang/String;
+	public final fun getVersionName ()Ljava/lang/String;
+	public final fun setFatFrameworkName (Ljava/lang/String;)V
+	public final fun setNamePrefix (Ljava/lang/String;)V
+	public final fun setOutputPath (Ljava/lang/String;)V
+	public final fun setVersionName (Ljava/lang/String;)V
+}
+
+public abstract class com/prof18/kmp/fatframework/cocoa/KMPFatFrameworkCocoaPlugin : org/gradle/api/Plugin {
+	public fun <init> ()V
+	public synthetic fun apply (Ljava/lang/Object;)V
+	public fun apply (Lorg/gradle/api/Project;)V
+}
+

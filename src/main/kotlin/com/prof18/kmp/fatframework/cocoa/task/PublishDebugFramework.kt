@@ -11,10 +11,10 @@ import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
-const val PUBLISH_DEBUG_FRAMEWORK_TASK_NAME = "publishIosDebugFatFramework"
-const val PREPARE_COCOA_REPO_FOR_DEBUG_TASK_NAME = "prepareIosCocoaRepoForDebug"
+internal const val PUBLISH_DEBUG_FRAMEWORK_TASK_NAME = "publishIosDebugFatFramework"
+internal const val PREPARE_COCOA_REPO_FOR_DEBUG_TASK_NAME = "prepareIosCocoaRepoForDebug"
 
-fun Project.registerPublishDebugFrameworkTask() {
+internal fun Project.registerPublishDebugFrameworkTask() {
 
     tasks.register(PREPARE_COCOA_REPO_FOR_DEBUG_TASK_NAME) {
         description = "Prepare the CocoaPod repository for debug."

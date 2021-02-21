@@ -2,7 +2,7 @@ package com.prof18.kmp.fatframework.cocoa.data
 
 import com.prof18.kmp.fatframework.cocoa.KMPFatFrameworkCocoaPlugin
 
-data class CocoaPodRepoInfo(
+internal data class CocoaPodRepoInfo(
     var summary: String = "",
     var homepage: String = "",
     var license: String = "",
