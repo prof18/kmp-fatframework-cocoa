@@ -27,17 +27,24 @@ repositories {
     mavenCentral()
 }
 
+val fixtureClasspath by configurations.creating
+
+// Append any extra dependencies to the test fixtures via a custom configuration classpath. This
+// allows us to apply additional plugins in a fixture while still leveraging dependency resolution
+// and de-duplication semantics.
+tasks.pluginUnderTestMetadata {
+    pluginClasspath.from(fixtureClasspath)
+}
+
 dependencies {
     compileOnly(gradleApi())
 
     compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.30")
     compileOnly("org.jetbrains.kotlin:kotlin-compiler-embeddable:1.4.30")
 
-//    testImplementation("io.kotest:kotest-runner-junit5:4.3.0")
-//    testImplementation("io.kotest:kotest-assertions-core:4.3.0")
-//    testImplementation("io.kotest:kotest-property:4.3.0")
-//    testImplementation("io.mockk:mockk:1.10.0")
-    testImplementation(kotlin("gradle-plugin"))
+    testImplementation("junit:junit:4.13.1")
+    testImplementation("com.google.truth:truth:1.0.1")
+    fixtureClasspath(kotlin("gradle-plugin"))
 }
 
 java {
@@ -48,8 +55,8 @@ java {
     withSourcesJar()
 }
 
-tasks.withType<Test> {
-    useJUnitPlatform()
+tasks.test {
+    useJUnit()
 }
 
 gradlePlugin {
@@ -57,7 +64,7 @@ gradlePlugin {
         create("fatframeworkCocoa") {
             id = group
             implementationClass = "com.prof18.kmp.fatframework.cocoa.KMPFatFrameworkCocoaPlugin"
-            version = "0.0.1-SNAPSHOT"
+            version = versionName
         }
     }
 }

@@ -40,7 +40,7 @@ internal fun Project.execBashCommandInRepoAndThrowExecException(commandList: Lis
     val config = getConfigurationOrThrow()
     try {
         executeBashCommand(
-            workingDirPath = config.outputPath, // TODO: change to cocoa repo path
+            workingDirPath = config.outputPath,
             commandList = commandList
         )
     } catch (e: ExecException) {

@@ -11,7 +11,7 @@ internal fun Project.getConfigurationOrThrow() = PluginConfig.of(
     extensions.findByName(FAT_FRAMEWORK_COCOA_EXTENSION) as KMPFatFrameworkCocoaExtension
 )
 
-internal  class PluginConfig private constructor(
+internal class PluginConfig private constructor(
     val debugFatFrameworkList: List<Framework>,
     val releaseFatFrameworkList: List<Framework>,
     val fatFrameworkName: String,
@@ -24,25 +24,23 @@ internal  class PluginConfig private constructor(
         fun of(extension: KMPFatFrameworkCocoaExtension): PluginConfig {
 
             val fatFrameworkName: String = if (extension.fatFrameworkName == null) {
-                throw InvalidUserDataException("You must provide the property `fatFrameworkName`")
+                throw InvalidUserDataException(PluginConfigErrorMessages.FAT_FRAMEWORK_NAME_NOT_PRESENT_MESSAGE)
             } else {
                 extension.fatFrameworkName!!
             }
             val outputPath = if (extension.outputPath == null) {
-                throw InvalidUserDataException("You must provide the property `outputPath`")
+                throw InvalidUserDataException(PluginConfigErrorMessages.OUTPUT_PATH_NOT_PRESENT_MESSAGE)
             } else {
                 extension.outputPath!!
             }
 
             val versionName = if (extension.versionName == null) {
-                throw InvalidUserDataException("You must provide the property `versionName`")
+                throw InvalidUserDataException(PluginConfigErrorMessages.VERSION_NAME_NOT_PRESENT_MESSAGE)
             } else {
                 extension.versionName!!
             }
 
             return PluginConfig(
-                // TODO: user get or null and throw error,
-                //  and improve with error messages.
                 debugFatFrameworkList = extension.debugFrameworkList,
                 releaseFatFrameworkList = extension.releaseFrameworkList,
                 fatFrameworkName = fatFrameworkName,
