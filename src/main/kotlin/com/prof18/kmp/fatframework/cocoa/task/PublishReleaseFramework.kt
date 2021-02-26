@@ -39,7 +39,7 @@ internal fun Project.registerPublishReleaseFrameworkTask() {
             }
 
             // Check if master or main
-            branchName = retrieveMainBranchName()
+            branchName = retrieveMainBranchName(config.outputPath)
 
             // Checkout on selected branch
             execBashCommandInRepoAndThrowExecException(

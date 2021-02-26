@@ -8,11 +8,9 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import java.io.File
-import java.io.FileWriter
 
 class FatFrameworkTasksWithoutFieldsTest {
 
-    // TODO: clean with before and after
     private lateinit var testProject: File
     private lateinit var buildGradleFile: File
     private lateinit var gradleFileStringBuilder: StringBuilder
@@ -21,7 +19,7 @@ class FatFrameworkTasksWithoutFieldsTest {
     fun setup() {
         val testProjectName = "test-project"
         testProject = File("src/test/resources/$testProjectName")
-        buildGradleFile =  File("src/test/resources/$testProjectName/build.gradle.kts")
+        buildGradleFile = File("src/test/resources/$testProjectName/build.gradle.kts")
 
         gradleFileStringBuilder = StringBuilder()
         gradleFileStringBuilder.append(TestUtils.baseGradleFile)
@@ -34,13 +32,13 @@ class FatFrameworkTasksWithoutFieldsTest {
 
     @Test
     fun `task returns error when fat framework name is not present`() {
-//        val pluginConfig = """
-//           fatFrameworkCocoaConfig {
-//           }
-//       """.trimIndent()
+        val pluginConfig = """
+           fatFrameworkCocoaConfig {
+           }
+       """.trimIndent()
 
-//        gradleFileStringBuilder.append("\n")
-//        gradleFileStringBuilder.append(pluginConfig)
+        gradleFileStringBuilder.append("\n")
+        gradleFileStringBuilder.append(pluginConfig)
         buildGradleFile.writeText(gradleFileStringBuilder.toString())
 
         val runner = GradleRunner.create()
@@ -56,12 +54,56 @@ class FatFrameworkTasksWithoutFieldsTest {
 
     }
 
-    // TODO: test without output path
+    @Test
+    fun `task return error when output path is not present`() {
 
-    // TODO: test without namePrefix
+        val pluginConfig = """
+           fatFrameworkCocoaConfig {
+                fatFrameworkName = "LibraryName"
+           }
+       """.trimIndent()
 
-    // TODO: test without version name
+        gradleFileStringBuilder.append("\n")
+        gradleFileStringBuilder.append(pluginConfig)
+        buildGradleFile.writeText(gradleFileStringBuilder.toString())
 
+        val runner = GradleRunner.create()
+            .withProjectDir(testProject)
+            .withPluginClasspath()
 
+        val result = runner
+            .withArguments("buildIosDebugFatFramework", "--stacktrace")
+            .buildAndFail()
 
+        assertThat(result.output)
+            .contains(PluginConfigErrorMessages.OUTPUT_PATH_NOT_PRESENT_MESSAGE)
+
+    }
+
+    @Test
+    fun `task return error when version name is not present`() {
+
+        val pluginConfig = """
+           fatFrameworkCocoaConfig {
+                fatFrameworkName = "LibraryName"
+                outputPath = "${testProject.path}/../test-dest"
+           }
+       """.trimIndent()
+
+        gradleFileStringBuilder.append("\n")
+        gradleFileStringBuilder.append(pluginConfig)
+        buildGradleFile.writeText(gradleFileStringBuilder.toString())
+
+        val runner = GradleRunner.create()
+            .withProjectDir(testProject)
+            .withPluginClasspath()
+
+        val result = runner
+            .withArguments("buildIosDebugFatFramework", "--stacktrace")
+            .buildAndFail()
+
+        assertThat(result.output)
+            .contains(PluginConfigErrorMessages.VERSION_NAME_NOT_PRESENT_MESSAGE)
+
+    }
 }

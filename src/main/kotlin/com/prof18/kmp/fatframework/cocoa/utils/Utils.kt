@@ -59,13 +59,12 @@ internal fun Project.execBashCommandThrowExecException(output: File, commandList
     }
 }
 
-internal fun Project.retrieveMainBranchName(): String {
-    val config = getConfigurationOrThrow()
+internal fun Project.retrieveMainBranchName(outputPath: String): String {
     var branchName = ""
     try {
         val checkMainOutput = executeBashCommand(
             showOutput = false,
-            workingDirPath = config.outputPath,
+            workingDirPath = outputPath,
             commandList = listOf("git", "branch", "--list", "main")
         )
         if (checkMainOutput.contains("main")) {
@@ -77,7 +76,7 @@ internal fun Project.retrieveMainBranchName(): String {
         if (branchName.isEmpty()) {
             val checkMasterOutput = executeBashCommand(
                 showOutput = false,
-                workingDirPath = config.outputPath,
+                workingDirPath = outputPath,
                 commandList = listOf("git", "branch", "--list", "master")
             )
             if (checkMasterOutput.contains("master")) {

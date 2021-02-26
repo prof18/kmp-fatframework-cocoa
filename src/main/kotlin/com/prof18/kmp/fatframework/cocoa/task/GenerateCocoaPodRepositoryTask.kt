@@ -37,7 +37,7 @@ internal fun Project.registerGenerateCocoaPodRepositoryTask() {
                 "frameworkName" to "${conf.fatFrameworkName}.framework"
             )
 
-            // TODO: add iOs version and other platforms on the spec file
+            // TODO: add iOs version and other platforms on the spec file?
 
             SimpleTemplateEngine()
                 .createTemplate(CocoaPodRepoInfo.templateFile)
@@ -74,7 +74,7 @@ internal fun Project.registerGenerateCocoaPodRepositoryTask() {
                 exceptionMessage = "Unable to push on remote repository"
             )
 
-            val branchName = retrieveMainBranchName()
+            val branchName = retrieveMainBranchName(conf.outputPath)
             println(branchName)
             execBashCommandThrowExecException(
                 output = parentFile,
