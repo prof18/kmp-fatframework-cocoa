@@ -18,7 +18,7 @@ plugins {
     signing
 }
 
-val versionName = "0.0.1-SNAPSHOT"
+val versionName = "0.0.1"
 val group = "com.prof18.kmp.fatframework.cocoa"
 
 version = versionName
@@ -96,7 +96,7 @@ publishing {
                 artifactId = "com.prof18.kmp.fatframework.cocoa.gradle.plugin"
 
                 name.set("KMP FatFramework Cocoa")
-                description.set("Gradle plugin to distribute a Kotlin Multiplatform iOS library with CocoaPod")
+                description.set("Gradle plugin to distribute a Kotlin Multiplatform iOS library in a FatFramework with CocoaPod")
                 url.set("https://github.com/prof18/kmp-fatframework-cocoa")
 
                 licenses {
