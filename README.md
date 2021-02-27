@@ -131,6 +131,10 @@ fatFrameworkCocoaConfig {
 }
 ```
 
+## Sample Project
+
+To see the plugin in action, I've published [a little sample project](https://github.com/prof18/kmp-fatframework-test-project).
+
 ## Further Readings
 
 This plugin is born from a set of unbundled Gradle tasks that I was copying between every Kotlin Multiplatform project.
