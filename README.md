@@ -3,7 +3,7 @@
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.prof18.kmp.fatframework.cocoa/com.prof18.kmp.fatframework.cocoa.gradle.plugin/badge.svg)](https://maven-badges.herokuapp.com/maven-central/cz.jirutka.rsql/rsql-parser)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-**KMP FatFramework Cocoa** is a Gradle plugin for Kotlin Multiplatform projects that generates a FatFramework for iOs
+**KMP FatFramework Cocoa** is a Gradle plugin for Kotlin Multiplatform projects that generates a FatFramework for iOS
 targets and manages the publishing process in a CocoaPod Repository.
 
 ## Installation
@@ -37,7 +37,7 @@ The plugin adds five Gradle tasks to your project.
   - committing the changes;
   - and publishing to remote.
 
-  In this way, in the iOs project, you can you the latest changes published on the develop branch:
+  In this way, in the iOS project, you can you the latest changes published on the develop branch:
 
   ```ruby
   pod '<your-library-name>', :git => "git@github.com:<git-username>/<repo-name>.git", :branch => 'develop'
@@ -55,7 +55,7 @@ The plugin adds five Gradle tasks to your project.
   - tagging the commit;
   - and publishing to remote.
 
-  In this way, in the iOs project, you have to specify a version:
+  In this way, in the iOS project, you have to specify a version:
 
   ```ruby
   pod '<your-library-name>', :git => "git@github.com:<git-username>/<repo-name>.git", :tag => '<version-number>'
