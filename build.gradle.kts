@@ -18,7 +18,7 @@ plugins {
     signing
 }
 
-val versionName = "0.0.1"
+val versionName = "0.0.2-SNAPSHOT"
 val group = "com.prof18.kmp.fatframework.cocoa"
 
 version = versionName
@@ -39,8 +39,8 @@ tasks.pluginUnderTestMetadata {
 dependencies {
     compileOnly(gradleApi())
 
-    compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.30")
-    compileOnly("org.jetbrains.kotlin:kotlin-compiler-embeddable:1.4.30")
+    compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.10")
+    compileOnly("org.jetbrains.kotlin:kotlin-compiler-embeddable:1.5.10")
 
     testImplementation("junit:junit:4.13.1")
     testImplementation("com.google.truth:truth:1.0.1")
