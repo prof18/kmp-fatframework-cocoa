@@ -64,49 +64,6 @@ abstract class KMPFatFrameworkCocoaPlugin : Plugin<Project> {
                     extension.debugFrameworkList.addAll(debugFrameworks)
                     extension.releaseFrameworkList.addAll(releaseFrameworks)
 
-//                    for (nativeTarget in nativeTargetList) {
-//
-////                        nativeTarget.binaries.getFramework(NativeBuildType.DEBUG).outputFile
-//                        println("aronneeee")
-//
-//                        nativeTarget.binaries.filter { it.outputKind == NativeOutputKind.FRAMEWORK }.forEach {
-//                            println("Name: ${it.baseName} - BuildType: ${it.buildType} - prefix: ${it.outputFile.path}")
-//                        }
-//
-////                        println(nativeTarget.binaries.first().buildType)
-//
-//                        val debug: List<Framework> = nativeTarget.binaries
-//                            .filter { it.buildType == NativeBuildType.DEBUG && it.outputKind == NativeOutputKind.FRAMEWORK }
-//                            .map {
-//                                it as Framework
-//                            }
-//
-//                        println("debug: ${debug.size}")
-//                        debug.forEach {
-//                            println("${it.outputFile}")
-//                            println("${it.name}")
-//                        }
-//
-//                        val release = nativeTarget.binaries.filter { it.buildType == NativeBuildType.RELEASE }
-//                        println("Release size: ${release.size}")
-//
-////                        println(nativeTarget.binaries.size)
-////                        println(nativeTarget.binaries.toString())
-//                        val debugFramework: Framework? = if (namePrefix == null) {
-//                            nativeTarget.binaries.findFramework(NativeBuildType.DEBUG)
-//                        } else {
-//                            nativeTarget.binaries.findFramework(namePrefix, NativeBuildType.DEBUG)
-//                        }
-//                        println("debugFramework: $debugFramework")
-//                        val releaseFramework: Framework = if (namePrefix == null) {
-//                            nativeTarget.binaries.getFramework("Release")
-//                        } else {
-//                            nativeTarget.binaries.getFramework(namePrefix, "Release")
-//                        }
-//                        extension.debugFrameworkList.add(debugFramework!!)
-//                        extension.releaseFrameworkList.add(releaseFramework)
-//                    }
-
                     // Register Tasks
                     // Cocoa Pod Repo
                     project.registerGenerateCocoaPodRepositoryTask()
