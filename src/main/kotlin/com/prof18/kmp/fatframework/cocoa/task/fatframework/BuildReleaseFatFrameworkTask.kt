@@ -1,4 +1,4 @@
-package com.prof18.kmp.fatframework.cocoa.task
+package com.prof18.kmp.fatframework.cocoa.task.fatframework
 
 import com.prof18.kmp.fatframework.cocoa.data.getConfigurationOrThrow
 import org.gradle.api.Project

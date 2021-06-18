@@ -5,6 +5,7 @@ import com.prof18.kmp.fatframework.cocoa.KMPFatFrameworkCocoaExtension
 import org.gradle.api.InvalidUserDataException
 import org.gradle.api.Project
 import org.jetbrains.kotlin.gradle.plugin.mpp.Framework
+import java.io.File
 
 @Throws(InvalidUserDataException::class)
 internal fun Project.getConfigurationOrThrow() = PluginConfig.of(
@@ -20,6 +21,9 @@ internal class PluginConfig private constructor(
     val versionName: String,
     val cocoaPodRepoInfo: CocoaPodRepoInfo
 ) {
+
+    internal fun getPodSpecFile() = File("${outputPath}/${fatFrameworkName}.podspec")
+
     internal companion object {
         fun of(extension: KMPFatFrameworkCocoaExtension): PluginConfig {
 

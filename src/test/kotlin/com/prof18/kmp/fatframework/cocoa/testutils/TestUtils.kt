@@ -15,7 +15,7 @@ object TestUtils {
 
         kotlin {
             ios() {
-                binaries.framework()
+                binaries.framework("aronne")
             }
             sourceSets {
                 val commonMain by getting

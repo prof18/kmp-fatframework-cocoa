@@ -8,7 +8,7 @@ import groovy.text.SimpleTemplateEngine
 import org.gradle.api.Project
 import java.io.File
 
-internal const val GENERATE_COCOA_POD_TASK_NAME = "generateCocoaPodRepoForIosFatFramework"
+internal const val GENERATE_COCOA_POD_TASK_NAME = "generateCocoaPodRepoForIosFramework"
 
 internal fun Project.registerGenerateCocoaPodRepositoryTask() {
     tasks.register(GENERATE_COCOA_POD_TASK_NAME) {
@@ -26,6 +26,12 @@ internal fun Project.registerGenerateCocoaPodRepositoryTask() {
                 createNewFile()
             }
 
+            val frameworkName = if (conf.cocoaPodRepoInfo.useXCFramework) {
+                "${conf.fatFrameworkName}.xcframework"
+            } else {
+                "${conf.fatFrameworkName}.framework"
+            }
+
             val templateMap = mapOf(
                 "name" to conf.fatFrameworkName,
                 "version" to conf.versionName,
@@ -34,7 +40,7 @@ internal fun Project.registerGenerateCocoaPodRepositoryTask() {
                 "license" to conf.cocoaPodRepoInfo.license,
                 "authors" to conf.cocoaPodRepoInfo.authors,
                 "gitUrl" to conf.cocoaPodRepoInfo.gitUrl,
-                "frameworkName" to "${conf.fatFrameworkName}.framework"
+                "frameworkName" to frameworkName
             )
 
             // TODO: add iOs version and other platforms on the spec file?

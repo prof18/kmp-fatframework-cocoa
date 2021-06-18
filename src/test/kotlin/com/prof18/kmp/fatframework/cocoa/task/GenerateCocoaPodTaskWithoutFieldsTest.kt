@@ -46,7 +46,7 @@ class GenerateCocoaPodTaskWithoutFieldsTest {
             .withPluginClasspath()
 
         val result = runner
-            .withArguments("generateCocoaPodRepoForIosFatFramework", "--stacktrace")
+            .withArguments("generateCocoaPodRepoForIosFramework", "--stacktrace")
             .buildAndFail()
 
         Truth.assertThat(result.output)
@@ -72,7 +72,7 @@ class GenerateCocoaPodTaskWithoutFieldsTest {
             .withPluginClasspath()
 
         val result = runner
-            .withArguments("generateCocoaPodRepoForIosFatFramework", "--stacktrace")
+            .withArguments("generateCocoaPodRepoForIosFramework", "--stacktrace")
             .buildAndFail()
 
         Truth.assertThat(result.output)
@@ -99,7 +99,7 @@ class GenerateCocoaPodTaskWithoutFieldsTest {
             .withPluginClasspath()
 
         val result = runner
-            .withArguments("generateCocoaPodRepoForIosFatFramework", "--stacktrace")
+            .withArguments("generateCocoaPodRepoForIosFramework", "--stacktrace")
             .buildAndFail()
 
         Truth.assertThat(result.output)

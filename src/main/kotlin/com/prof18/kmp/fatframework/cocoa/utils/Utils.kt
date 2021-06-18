@@ -5,6 +5,11 @@ import org.gradle.api.Project
 import org.gradle.process.internal.ExecException
 import java.io.ByteArrayOutputStream
 import java.io.File
+import org.jetbrains.kotlin.gradle.plugin.mpp.Framework
+
+fun Framework.dsymFile(): File  {
+    return File(outputFile.parent, "${name}.framework.dSYM")
+}
 
 internal fun Project.executeBashCommand(showOutput: Boolean = true, workingDirPath: String, commandList: List<String>): String {
     return ByteArrayOutputStream().use { outputStream ->

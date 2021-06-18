@@ -28,6 +28,8 @@ class FatFrameworkTasksWithoutFieldsTest {
     @After
     fun cleanUp() {
         buildGradleFile.deleteRecursively()
+        File("${testProject.path}/build").deleteRecursively()
+        File("${testProject.path}/.gradle").deleteRecursively()
     }
 
     @Test

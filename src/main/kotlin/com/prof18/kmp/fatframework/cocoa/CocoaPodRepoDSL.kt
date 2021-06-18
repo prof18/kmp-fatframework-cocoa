@@ -6,4 +6,5 @@ class CocoaPodRepoDSL {
     var license: String = ""
     var authors: String = ""
     var gitUrl: String = ""
+    var useXCFramework: Boolean = false
 }

@@ -30,7 +30,8 @@ abstract class KMPFatFrameworkCocoaExtension @Inject constructor(project: Projec
                 homepage = dsl.homepage,
                 license = dsl.license,
                 authors = dsl.authors,
-                gitUrl = dsl.gitUrl
+                gitUrl = dsl.gitUrl,
+                useXCFramework = dsl.useXCFramework
             )
 
         }
