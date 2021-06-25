@@ -18,7 +18,7 @@ plugins {
     signing
 }
 
-val versionName = "0.2.0"
+val versionName = "0.2.1"
 val group = "com.prof18.kmp.fatframework.cocoa"
 
 version = versionName
