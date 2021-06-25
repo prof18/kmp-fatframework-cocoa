@@ -42,7 +42,7 @@ internal fun Project.registerGenerateCocoaPodRepositoryTask() {
                 "gitUrl" to conf.cocoaPodRepoInfo.gitUrl,
                 "frameworkName" to frameworkName
             )
-            
+
             SimpleTemplateEngine()
                 .createTemplate(CocoaPodRepoInfo.templateFile)
                 .make(templateMap)

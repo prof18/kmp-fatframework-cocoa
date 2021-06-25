@@ -16,13 +16,13 @@ public abstract class com/prof18/kmp/fatframework/cocoa/KMPFatFrameworkCocoaExte
 	public fun <init> (Lorg/gradle/api/Project;)V
 	public final fun cocoaPodRepoInfo (Lgroovy/lang/Closure;)V
 	public final fun cocoaPodRepoInfo (Lkotlin/jvm/functions/Function1;)V
-	public final fun getFatFrameworkName ()Ljava/lang/String;
-	public final fun getNamePrefix ()Ljava/lang/String;
+	public final fun getFrameworkName ()Ljava/lang/String;
 	public final fun getOutputPath ()Ljava/lang/String;
+	public final fun getUseXCFramework ()Z
 	public final fun getVersionName ()Ljava/lang/String;
-	public final fun setFatFrameworkName (Ljava/lang/String;)V
-	public final fun setNamePrefix (Ljava/lang/String;)V
+	public final fun setFrameworkName (Ljava/lang/String;)V
 	public final fun setOutputPath (Ljava/lang/String;)V
+	public final fun setUseXCFramework (Z)V
 	public final fun setVersionName (Ljava/lang/String;)V
 }
 

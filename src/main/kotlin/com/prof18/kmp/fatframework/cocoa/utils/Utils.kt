@@ -7,7 +7,7 @@ import java.io.ByteArrayOutputStream
 import java.io.File
 import org.jetbrains.kotlin.gradle.plugin.mpp.Framework
 
-fun Framework.dsymFile(): File  {
+internal fun Framework.dsymFile(): File  {
     return File(outputFile.parent, "${name}.framework.dSYM")
 }
 
