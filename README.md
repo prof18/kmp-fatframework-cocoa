@@ -125,7 +125,7 @@ fatFrameworkCocoaConfig {
 
 ## Changelog
 
-- The version `0.2.1` introduce some breaking changes to better support XCFrameworks. Give a look to the [0.2.0 release notes]().
+- The version `0.2.1` introduce some breaking changes to better support XCFrameworks. Give a look to the [0.2.1 release notes](https://github.com/prof18/kmp-fatframework-cocoa/releases/tag/0.2.1).
 
 ## Sample Project
 
