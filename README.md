@@ -1,6 +1,6 @@
 # KMP FatFramework Cocoa
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.prof18.kmp.fatframework.cocoa/com.prof18.kmp.fatframework.cocoa.gradle.plugin/badge.svg)](https://maven-badges.herokuapp.com/maven-central/cz.jirutka.rsql/rsql-parser)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.prof18.kmp.fatframework.cocoa/com.prof18.kmp.fatframework.cocoa.gradle.plugin/badge.svg)](https://search.maven.org/artifact/com.prof18.kmp.fatframework.cocoa/com.prof18.kmp.fatframework.cocoa.gradle.plugin/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 **KMP FatFramework Cocoa** is a Gradle plugin for Kotlin Multiplatform projects that generates a **FatFramework** for iOS targets, or a **XCFramework**
@@ -125,7 +125,7 @@ fatFrameworkCocoaConfig {
 
 ## Changelog
 
-- The version `0.2.0` introduce some breaking changes to better support XCFrameworks. Give a look to the [0.2.0 release notes]().
+- The version `0.2.1` introduce some breaking changes to better support XCFrameworks. Give a look to the [0.2.0 release notes]().
 
 ## Sample Project
 
