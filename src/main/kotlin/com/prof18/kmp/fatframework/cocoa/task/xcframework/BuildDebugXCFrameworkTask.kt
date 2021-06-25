@@ -5,7 +5,7 @@ import com.prof18.kmp.fatframework.cocoa.task.xcframework.common.buildXCFramewor
 import org.gradle.api.Project
 import org.gradle.api.tasks.Exec
 
-internal const val BUILD_DEBUG_XC_FRAMEWORK_TASK_NAME = "buildIosDebugXCFramework"
+internal const val BUILD_DEBUG_XC_FRAMEWORK_TASK_NAME = "buildDebugXCFramework"
 
 internal fun Project.registerBuildDebugXCFrameworkTask() {
     tasks.register(BUILD_DEBUG_XC_FRAMEWORK_TASK_NAME, Exec::class.java) {

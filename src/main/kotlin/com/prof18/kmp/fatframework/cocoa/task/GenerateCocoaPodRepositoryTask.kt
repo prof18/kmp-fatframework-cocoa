@@ -8,7 +8,7 @@ import groovy.text.SimpleTemplateEngine
 import org.gradle.api.Project
 import java.io.File
 
-internal const val GENERATE_COCOA_POD_TASK_NAME = "generateCocoaPodRepoForIosFramework"
+internal const val GENERATE_COCOA_POD_TASK_NAME = "generateCocoaPodRepo"
 
 internal fun Project.registerGenerateCocoaPodRepositoryTask() {
     tasks.register(GENERATE_COCOA_POD_TASK_NAME) {
@@ -17,7 +17,7 @@ internal fun Project.registerGenerateCocoaPodRepositoryTask() {
 
         doLast {
             val conf = getConfigurationOrThrow()
-            val podspecFileName = "${conf.fatFrameworkName}.podspec"
+            val podspecFileName = "${conf.frameworkName}.podspec"
 
             val parentFile = File(conf.outputPath)
 
@@ -26,14 +26,14 @@ internal fun Project.registerGenerateCocoaPodRepositoryTask() {
                 createNewFile()
             }
 
-            val frameworkName = if (conf.cocoaPodRepoInfo.useXCFramework) {
-                "${conf.fatFrameworkName}.xcframework"
+            val frameworkName = if (conf.useXCFramework) {
+                "${conf.frameworkName}.xcframework"
             } else {
-                "${conf.fatFrameworkName}.framework"
+                "${conf.frameworkName}.framework"
             }
 
             val templateMap = mapOf(
-                "name" to conf.fatFrameworkName,
+                "name" to conf.frameworkName,
                 "version" to conf.versionName,
                 "summary" to conf.cocoaPodRepoInfo.summary,
                 "homepage" to conf.cocoaPodRepoInfo.homepage,
@@ -42,9 +42,7 @@ internal fun Project.registerGenerateCocoaPodRepositoryTask() {
                 "gitUrl" to conf.cocoaPodRepoInfo.gitUrl,
                 "frameworkName" to frameworkName
             )
-
-            // TODO: add iOs version and other platforms on the spec file?
-
+            
             SimpleTemplateEngine()
                 .createTemplate(CocoaPodRepoInfo.templateFile)
                 .make(templateMap)

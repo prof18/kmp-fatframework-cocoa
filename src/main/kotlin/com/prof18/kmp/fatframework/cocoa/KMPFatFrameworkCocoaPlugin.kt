@@ -32,10 +32,13 @@ abstract class KMPFatFrameworkCocoaPlugin : Plugin<Project> {
 
                     val nativeTargetList: List<KotlinNativeTarget> = kmpExtension.targets.toList()
                         .filterIsInstance<KotlinNativeTarget>()
-                        // TODO: filter for apple family when having xcframework
-                        .filter { it.konanTarget.family == Family.IOS }
-
-                    val namePrefix = extension.namePrefix
+                        .filter {
+                            if (extension.useXCFramework) {
+                                it.konanTarget.family.isAppleFamily
+                            } else {
+                                it.konanTarget.family == Family.IOS
+                            }
+                        }
 
                     val debugFrameworks: List<Framework> = nativeTargetList
                         .flatMap {
@@ -68,22 +71,24 @@ abstract class KMPFatFrameworkCocoaPlugin : Plugin<Project> {
                     // Cocoa Pod Repo
                     project.registerGenerateCocoaPodRepositoryTask()
 
-                    // Build
-                    // FatFramework
-                    project.registerBuildDebugFatFrameworkTask()
-                    project.registerBuildReleaseFatFrameworkTask()
-                    // XC Framework
-                    project.registerBuildDebugXCFrameworkTask()
-                    project.registerBuildReleaseXCFrameworkTask()
-
-                    // Release
                     project.registerPublishPreparationTasks()
-                    // Fat Framework
-                    project.registerPublishDebugFatFrameworkTask()
-                    project.registerPublishReleaseFatFrameworkTask()
-                    // XC Framework
-                    project.registerPublishDebugXCFrameworkTask()
-                    project.registerPublishReleaseXCFrameworkTask()
+                    if (extension.useXCFramework) {
+                        // Build
+                        project.registerBuildDebugXCFrameworkTask()
+                        project.registerBuildReleaseXCFrameworkTask()
+
+                        // Release
+                        project.registerPublishDebugXCFrameworkTask()
+                        project.registerPublishReleaseXCFrameworkTask()
+                    } else {
+                        // Build
+                        project.registerBuildDebugFatFrameworkTask()
+                        project.registerBuildReleaseFatFrameworkTask()
+
+                        // Release
+                        project.registerPublishDebugFatFrameworkTask()
+                        project.registerPublishReleaseFatFrameworkTask()
+                    }
                 }
         }
     }

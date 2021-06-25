@@ -11,7 +11,7 @@ internal fun Exec.buildXCFramework(config: PluginConfig, frameworks: List<Framew
         dependsOn(framework.linkTaskName)
     }
 
-    val xcFrameworkDest = File("${config.outputPath}/${config.fatFrameworkName}.xcframework")
+    val xcFrameworkDest = File("${config.outputPath}/${config.frameworkName}.xcframework")
 
     // Params taken from https://github.com/ge-org/multiplatform-swiftpackage/blob/master/src/main/kotlin/com/chromaticnoise/multiplatformswiftpackage/task/CreateXCFrameworkTask.kt
     executable = "xcodebuild"

@@ -4,7 +4,7 @@ object TestUtils {
 
     val baseGradleFile = """
         plugins {
-            kotlin("multiplatform") version "1.5.10"
+            kotlin("multiplatform") version "1.5.20"
             id("com.prof18.kmp.fatframework.cocoa")
         }
 
@@ -31,7 +31,7 @@ object TestUtils {
 
 
 fatFrameworkCocoaConfig {
-    fatFrameworkName = "LibraryName"
+    frameworkName = "LibraryName"
     outputPath = "$rootDir/../test-dest"
     namePrefix = "LibraryName"
     versionName = "1.2-SNAPSHOT"

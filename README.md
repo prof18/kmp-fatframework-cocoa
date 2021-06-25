@@ -3,8 +3,8 @@
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.prof18.kmp.fatframework.cocoa/com.prof18.kmp.fatframework.cocoa.gradle.plugin/badge.svg)](https://maven-badges.herokuapp.com/maven-central/cz.jirutka.rsql/rsql-parser)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-**KMP FatFramework Cocoa** is a Gradle plugin for Kotlin Multiplatform projects that generates a FatFramework for iOS
-targets and manages the publishing process in a CocoaPod Repository.
+**KMP FatFramework Cocoa** is a Gradle plugin for Kotlin Multiplatform projects that generates a **FatFramework** for iOS targets, or a **XCFramework**
+for Apple targets and manages the publishing process in a CocoaPod Repository.
 
 ## Installation
 
@@ -20,34 +20,47 @@ plugins {
 
 The plugin adds five Gradle tasks to your project.
 
-- `buildIosDebugFatFramework` that creates a FatFramework with the `Debug` target.
+- `buildDebugIosFatFramework` that creates a **FatFramework** with the `Debug` target.
 
 
-- `buildIosReleaseFatFramework` that creates a FatFramework with the `Release` target.
+- `buildDebugXCFramework` that creates a **XCFramework** with the `Debug` target.
 
 
-- `generateCocoaPodRepoForIosFatFramework` that generates a CocoaPod repository ready to host the FatFramework.
+- `buildReleaseIosFatFramework` that creates a **FatFramework** with the `Release` target.
 
 
-- `publishIosDebugFatFramework` that publishes the `Debug` version of the FatFramework in the CocoaPod repository.
-  The task takes care of everything:
+- `buildReleaseXCFramework` that creates a **XCFramework** with the `Release` target.
+
+
+- `generateCocoaPodRepo` that generates a CocoaPod repository ready to host the Framework.
+
+
+- `publishDebugIosFatFramework` that publishes the `Debug` version of the **FatFramework** in the CocoaPod repository.
+
+
+- `publishDebugXCFramework` that publishes the `Debug` version of the **XCFramework** in the CocoaPod repository.
+  <br><br>
+  The "publishDebug" task (for both the type of frameworks) takes care of everything:
   - changing the working branch from main/master to develop;
   - building the debug framework;
   - updating the version name inside the Podspec file;
   - committing the changes;
   - and publishing to remote.
 
-  In this way, in the iOS project, you can you the latest changes published on the develop branch:
+  In this way, in the iOS project, you can use the latest changes published on the develop branch:
 
   ```ruby
   pod '<your-library-name>', :git => "git@github.com:<git-username>/<repo-name>.git", :branch => 'develop'
   ```
   To run this task, the output path provided in the [configuration](#configuration) must be a git repository.
-  <br>
 
 
-- `publishIosReleaseFatFramework` that publishes the `Release` version of the FatFramework in the CocoaPod repository.
-  The task takes care of everything:
+- `publishReleaseIosFatFramework` that publishes the `Release` version of the **FatFramework** in the CocoaPod repository.
+
+
+- `publishReleaseXCFramework` that publishes the `Release` version of the **XCFramework** in the CocoaPod repository.
+  <br><br>
+  The "publishRelease" task (for both the type of frameworks) takes care of everything:
   - changing the working branch from develop to main/master;
   - building the release framework;
   - updating the version name inside the Podspec file;
@@ -65,29 +78,27 @@ The plugin adds five Gradle tasks to your project.
 
 ## Configuration
 
-You can configure the plugin with the `fatFrameworkCocoaConfig` block in your `build.gradle.[kts]`.
+You can configure the plugin with the `fatFrameworkCocoaConfig` block in your `build.gradle[.kts]`.
 
 The mandatory fields are three:
 
 - the name of the FatFramework
 - the output path
 - the version name
+- For XCFramework support, you need to set the `useXCFramework` flag. When the flag is set, only the XCFramework task can be called.
 
 ```kotlin
 fatFrameworkCocoaConfig {
-    fatFrameworkName = "LibraryName"
+    frameworkName = "LibraryName"
     outputPath = "$rootDir/../test-dest"
     versionName = "1.0"
+    useXCFramework = true
 }
 ```
 
-You can also provide a `namePrefix` for the Framework.
+When using a FatFramework, only iOS targets can be packed together. With XCFramework you can pack together all the Apple families: iOS, macOS, etc.
 
-```kotlin
-namePrefix = "NamePrefix"
-```
-
-If you want to run the `generateCocoaPodRepoForIosFatFramework` task to generate a CocoaPod repository, you have to
+If you want to run the `generateCocoaPodRepo` task to generate a CocoaPod repository, you have to
 provide the mandatory fields mentioned above and some other parameters in the `cocoaPodRepoInfo` block:
 
 - a summary of the library
@@ -98,7 +109,7 @@ provide the mandatory fields mentioned above and some other parameters in the `c
 
 ```kotlin
 fatFrameworkCocoaConfig {
-    fatFrameworkName = "LibraryName"
+    frameworkName = "LibraryName"
     outputPath = "$rootDir/../test-dest"
     versionName = "1.0"
 
@@ -112,24 +123,9 @@ fatFrameworkCocoaConfig {
 }
 ```
 
-Just as reference, the following block shows all the possible fields:
+## Changelog
 
-```kotlin
-fatFrameworkCocoaConfig {
-    fatFrameworkName = "LibraryName"
-    outputPath = "$rootDir/../test-dest"
-    namePrefix = "LibraryName"
-    versionName = "1.0"
-
-    cocoaPodRepoInfo {
-        summary = "This is a test KMP framework"
-        homepage = "https://github.com/prof18/ccoca-repo-test"
-        license = "Apache"
-        authors = "\"Marco Gomiero\" => \"mg@mail.it\""
-        gitUrl = "git@github.com:prof18/ccoca-repo-test.git"
-    }
-}
-```
+- The version `0.2.0` introduce some breaking changes to better support XCFrameworks. Give a look to the [0.2.0 release notes]().
 
 ## Sample Project
 

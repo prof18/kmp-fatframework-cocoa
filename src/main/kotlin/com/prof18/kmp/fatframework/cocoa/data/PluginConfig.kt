@@ -15,22 +15,22 @@ internal fun Project.getConfigurationOrThrow() = PluginConfig.of(
 internal class PluginConfig private constructor(
     val debugFatFrameworkList: List<Framework>,
     val releaseFatFrameworkList: List<Framework>,
-    val fatFrameworkName: String,
+    val frameworkName: String,
     val outputPath: String,
-    val namePrefix: String?,
     val versionName: String,
-    val cocoaPodRepoInfo: CocoaPodRepoInfo
+    val cocoaPodRepoInfo: CocoaPodRepoInfo,
+    val useXCFramework: Boolean
 ) {
 
-    internal fun getPodSpecFile() = File("${outputPath}/${fatFrameworkName}.podspec")
+    internal fun getPodSpecFile() = File("${outputPath}/${frameworkName}.podspec")
 
     internal companion object {
         fun of(extension: KMPFatFrameworkCocoaExtension): PluginConfig {
 
-            val fatFrameworkName: String = if (extension.fatFrameworkName == null) {
-                throw InvalidUserDataException(PluginConfigErrorMessages.FAT_FRAMEWORK_NAME_NOT_PRESENT_MESSAGE)
+            val frameworkName: String = if (extension.frameworkName == null) {
+                throw InvalidUserDataException(PluginConfigErrorMessages.FRAMEWORK_NAME_NOT_PRESENT_MESSAGE)
             } else {
-                extension.fatFrameworkName!!
+                extension.frameworkName!!
             }
             val outputPath = if (extension.outputPath == null) {
                 throw InvalidUserDataException(PluginConfigErrorMessages.OUTPUT_PATH_NOT_PRESENT_MESSAGE)
@@ -47,11 +47,11 @@ internal class PluginConfig private constructor(
             return PluginConfig(
                 debugFatFrameworkList = extension.debugFrameworkList,
                 releaseFatFrameworkList = extension.releaseFrameworkList,
-                fatFrameworkName = fatFrameworkName,
+                frameworkName = frameworkName,
                 outputPath = outputPath,
-                namePrefix = extension.namePrefix,
                 versionName = versionName,
-                cocoaPodRepoInfo = extension.cocoaPodRepoInfo
+                cocoaPodRepoInfo = extension.cocoaPodRepoInfo,
+                useXCFramework = extension.useXCFramework
             )
         }
     }

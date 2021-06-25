@@ -12,10 +12,10 @@ internal const val FAT_FRAMEWORK_COCOA_EXTENSION = "fatFrameworkCocoaConfig"
 @Suppress("UnnecessaryAbstractClass")
 abstract class KMPFatFrameworkCocoaExtension @Inject constructor(project: Project) {
 
-    var fatFrameworkName: String? = null
+    var frameworkName: String? = null
     var outputPath: String? = null
-    var namePrefix: String? = null
     var versionName: String? = null
+    var useXCFramework: Boolean = false
 
     // Internal variables
     internal val debugFrameworkList: MutableList<Framework> = mutableListOf()
@@ -30,8 +30,7 @@ abstract class KMPFatFrameworkCocoaExtension @Inject constructor(project: Projec
                 homepage = dsl.homepage,
                 license = dsl.license,
                 authors = dsl.authors,
-                gitUrl = dsl.gitUrl,
-                useXCFramework = dsl.useXCFramework
+                gitUrl = dsl.gitUrl
             )
 
         }

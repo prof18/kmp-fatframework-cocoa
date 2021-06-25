@@ -5,7 +5,7 @@ import org.gradle.api.Project
 import org.jetbrains.kotlin.gradle.tasks.FatFrameworkTask
 import java.io.File
 
-internal const val BUILD_RELEASE_FAT_FRAMEWORK_TASK_NAME = "buildIosReleaseFatFramework"
+internal const val BUILD_RELEASE_FAT_FRAMEWORK_TASK_NAME = "buildReleaseIosFatFramework"
 
 internal fun Project.registerBuildReleaseFatFrameworkTask() {
     tasks.register(BUILD_RELEASE_FAT_FRAMEWORK_TASK_NAME, FatFrameworkTask::class.java) {
@@ -15,7 +15,7 @@ internal fun Project.registerBuildReleaseFatFrameworkTask() {
         for (framework in config.releaseFatFrameworkList) {
             dependsOn(framework.linkTaskName)
         }
-        baseName = config.fatFrameworkName
+        baseName = config.frameworkName
         from(config.releaseFatFrameworkList)
         destinationDir = File(config.outputPath)
     }

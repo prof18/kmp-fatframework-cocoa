@@ -46,11 +46,11 @@ class GenerateCocoaPodTaskWithoutFieldsTest {
             .withPluginClasspath()
 
         val result = runner
-            .withArguments("generateCocoaPodRepoForIosFramework", "--stacktrace")
+            .withArguments(GENERATE_COCOA_POD_TASK_NAME, "--stacktrace")
             .buildAndFail()
 
         Truth.assertThat(result.output)
-            .contains(PluginConfigErrorMessages.FAT_FRAMEWORK_NAME_NOT_PRESENT_MESSAGE)
+            .contains(PluginConfigErrorMessages.FRAMEWORK_NAME_NOT_PRESENT_MESSAGE)
 
     }
 
@@ -59,7 +59,7 @@ class GenerateCocoaPodTaskWithoutFieldsTest {
 
         val pluginConfig = """
            fatFrameworkCocoaConfig {
-                fatFrameworkName = "LibraryName"
+                frameworkName = "LibraryName"
            }
        """.trimIndent()
 
@@ -72,7 +72,7 @@ class GenerateCocoaPodTaskWithoutFieldsTest {
             .withPluginClasspath()
 
         val result = runner
-            .withArguments("generateCocoaPodRepoForIosFramework", "--stacktrace")
+            .withArguments(GENERATE_COCOA_POD_TASK_NAME, "--stacktrace")
             .buildAndFail()
 
         Truth.assertThat(result.output)
@@ -85,7 +85,7 @@ class GenerateCocoaPodTaskWithoutFieldsTest {
 
         val pluginConfig = """
            fatFrameworkCocoaConfig {
-                fatFrameworkName = "LibraryName"
+                frameworkName = "LibraryName"
                 outputPath = "${testProject.path}/../test-dest"
            }
        """.trimIndent()
@@ -99,7 +99,7 @@ class GenerateCocoaPodTaskWithoutFieldsTest {
             .withPluginClasspath()
 
         val result = runner
-            .withArguments("generateCocoaPodRepoForIosFramework", "--stacktrace")
+            .withArguments(GENERATE_COCOA_POD_TASK_NAME, "--stacktrace")
             .buildAndFail()
 
         Truth.assertThat(result.output)

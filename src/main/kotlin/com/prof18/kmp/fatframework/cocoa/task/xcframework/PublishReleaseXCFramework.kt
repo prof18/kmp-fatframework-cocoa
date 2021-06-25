@@ -5,7 +5,7 @@ import com.prof18.kmp.fatframework.cocoa.task.common.PREPARE_COCOA_REPO_FOR_RELE
 import com.prof18.kmp.fatframework.cocoa.task.common.publishReleaseFramework
 import org.gradle.api.Project
 
-internal const val PUBLISH_RELEASE_XC_FRAMEWORK_TASK_NAME = "publishIosReleaseXCFramework"
+internal const val PUBLISH_RELEASE_XC_FRAMEWORK_TASK_NAME = "publishReleaseXCFramework"
 
 internal fun Project.registerPublishReleaseXCFrameworkTask() {
     tasks.register(PUBLISH_RELEASE_XC_FRAMEWORK_TASK_NAME) {

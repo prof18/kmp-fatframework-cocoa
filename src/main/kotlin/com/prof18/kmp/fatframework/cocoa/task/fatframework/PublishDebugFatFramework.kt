@@ -5,7 +5,7 @@ import com.prof18.kmp.fatframework.cocoa.task.common.PREPARE_COCOA_REPO_FOR_DEBU
 import com.prof18.kmp.fatframework.cocoa.task.common.publishDebugFramework
 import org.gradle.api.Project
 
-internal const val PUBLISH_DEBUG_FAT_FRAMEWORK_TASK_NAME = "publishIosDebugFatFramework"
+internal const val PUBLISH_DEBUG_FAT_FRAMEWORK_TASK_NAME = "publishDebugIosFatFramework"
 
 internal fun Project.registerPublishDebugFatFrameworkTask() {
 

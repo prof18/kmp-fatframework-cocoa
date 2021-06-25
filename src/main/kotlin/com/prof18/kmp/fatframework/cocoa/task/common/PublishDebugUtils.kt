@@ -15,7 +15,7 @@ internal fun Project.publishDebugFramework(config: PluginConfig) {
         throw ExecException("podspec file does not exists!")
     }
 
-    val tempPodSpecFile = File("${config.outputPath}/${config.fatFrameworkName}.podspec.new")
+    val tempPodSpecFile = File("${config.outputPath}/${config.frameworkName}.podspec.new")
 
     val reader = podSpecFile.bufferedReader()
     val writer = tempPodSpecFile.bufferedWriter()

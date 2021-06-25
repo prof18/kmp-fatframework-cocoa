@@ -2,6 +2,7 @@ package com.prof18.kmp.fatframework.cocoa.task
 
 import com.google.common.truth.Truth.assertThat
 import com.prof18.kmp.fatframework.cocoa.data.PluginConfigErrorMessages
+import com.prof18.kmp.fatframework.cocoa.task.fatframework.BUILD_DEBUG_FAT_FRAMEWORK_TASK_NAME
 import com.prof18.kmp.fatframework.cocoa.testutils.TestUtils
 import org.gradle.testkit.runner.GradleRunner
 import org.junit.After
@@ -48,11 +49,11 @@ class FatFrameworkTasksWithoutFieldsTest {
             .withPluginClasspath()
 
         val result = runner
-            .withArguments("buildIosDebugFatFramework", "--stacktrace")
+            .withArguments(BUILD_DEBUG_FAT_FRAMEWORK_TASK_NAME, "--stacktrace")
             .buildAndFail()
 
         assertThat(result.output)
-            .contains(PluginConfigErrorMessages.FAT_FRAMEWORK_NAME_NOT_PRESENT_MESSAGE)
+            .contains(PluginConfigErrorMessages.FRAMEWORK_NAME_NOT_PRESENT_MESSAGE)
 
     }
 
@@ -61,7 +62,7 @@ class FatFrameworkTasksWithoutFieldsTest {
 
         val pluginConfig = """
            fatFrameworkCocoaConfig {
-                fatFrameworkName = "LibraryName"
+                frameworkName = "LibraryName"
            }
        """.trimIndent()
 
@@ -74,7 +75,7 @@ class FatFrameworkTasksWithoutFieldsTest {
             .withPluginClasspath()
 
         val result = runner
-            .withArguments("buildIosDebugFatFramework", "--stacktrace")
+            .withArguments(BUILD_DEBUG_FAT_FRAMEWORK_TASK_NAME, "--stacktrace")
             .buildAndFail()
 
         assertThat(result.output)
@@ -87,7 +88,7 @@ class FatFrameworkTasksWithoutFieldsTest {
 
         val pluginConfig = """
            fatFrameworkCocoaConfig {
-                fatFrameworkName = "LibraryName"
+                frameworkName = "LibraryName"
                 outputPath = "${testProject.path}/../test-dest"
            }
        """.trimIndent()
@@ -101,7 +102,7 @@ class FatFrameworkTasksWithoutFieldsTest {
             .withPluginClasspath()
 
         val result = runner
-            .withArguments("buildIosDebugFatFramework", "--stacktrace")
+            .withArguments(BUILD_DEBUG_FAT_FRAMEWORK_TASK_NAME, "--stacktrace")
             .buildAndFail()
 
         assertThat(result.output)
