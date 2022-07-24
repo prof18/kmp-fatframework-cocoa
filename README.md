@@ -1,3 +1,5 @@
+This plugin has been archived in favour of [KMP Framework Bundler](https://github.com/prof18/kmp-framework-bundler). You can find a migration guide [here](https://github.com/prof18/kmp-framework-bundler#migration-from-kmp-fatframework-cocoa)
+
 # KMP FatFramework Cocoa
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.prof18.kmp.fatframework.cocoa/com.prof18.kmp.fatframework.cocoa.gradle.plugin/badge.svg)](https://search.maven.org/artifact/com.prof18.kmp.fatframework.cocoa/com.prof18.kmp.fatframework.cocoa.gradle.plugin/)
